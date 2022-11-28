@@ -11,13 +11,26 @@ import org.springframework.web.bind.annotation.RestController;
 import gauna_albornoz.venta_d_camisetas.Models.Camisetas;
 import gauna_albornoz.venta_d_camisetas.Repositories.CamisetasRepository;
 
-@RestController
+@RestController // para poder manejar solicitudes HTTP 
 @RequestMapping("")
 public class CamisetasController {
+  /*La anotación @Autowired significa que Spring va a inyectar en esta clase un
+   * bean
+   * llamado CamisetasRepository.
+   * No hay en este proyecto una clase CamisetasRepository. Solo hay una
+   * interfaz CamisetasRepository. Y esta interfaz lo único que hace es extender
+   * CrudRepository. No declara ni campos ni métodos. Nosotros no hacemos nada,
+   * todo lo hace Spring por nosotros.
+   * Esta es la inyección de dependencia. Nosotros lo único que hacemos es
+   * declarar la variable userRepository de tipo CamisetasRepository, y ponerle
+   * la anotación Autowired. Y listo. Ya tenemos en esta clase CamisetasController
+   * la variable CamisetasRepository correctamente configurada e inicializada, de
+   * manera que la podemos usar sin más.
+   */
   @Autowired
   private CamisetasRepository camiseRepository;
 
-  @PostMapping("/add") 
+  @PostMapping("/add") // @PostMapping se usa para poder agregar datos a nuestra base de datos
   public String addNewCamiseta(@RequestParam String club,@RequestParam String tipo, @RequestParam Long precio,@RequestParam Long stock) {
 
     Camisetas producto = new Camisetas();
@@ -38,12 +51,8 @@ public class CamisetasController {
     
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/{id}")// @PostMapping se usa para poder solicitar datos a nuestra base de datos
   public String findUserById(@PathVariable Long id) {
-    /*Dentro del estilo, el selector #users indica que el estilo
-     * que estamos definiendo es para ser usado solamente en el
-     * elemento del DOM que tiene id='users', o sea la tabla.
-     */
     String resp = """
       <style>
       h1{
@@ -53,10 +62,10 @@ public class CamisetasController {
         font-family: sans-serif;
       }
       body{
-        background-image: url(https://images6.alphacoders.com/550/550393.jpg);
+        background-image: url('image/fondo all.png');
         background-repeat: no-repeat;
         background-position: center, center;
-        background-size: 1660px  900px;
+        background-size: 100%;
         background-attachment: fixed;
       }
         #users {
@@ -117,7 +126,6 @@ public class CamisetasController {
   }
   @GetMapping("/all")
   public String getAllProductos() {
-    // This returns a JSON or XML with the users
     Iterable<Camisetas> iterable = camiseRepository.findAll();
     String resp = """
           <style>
@@ -185,7 +193,6 @@ public class CamisetasController {
   @GetMapping("")
   public String bienvenida() {
   String resp = """
-
     <style>
     h2{
       color: white;
@@ -208,8 +215,6 @@ public class CamisetasController {
         margin-top: 50px;
 
     }
-
-
     .Menu-horizontal{
         list-style: none;
         display: flex;
@@ -251,7 +256,6 @@ public class CamisetasController {
           <header>
                   <h2 class='logo-img'>Venta de Camisetas</h2>
                   <link href = 
-
               </div>
               <nav>
                   <ul class='Menu-horizontal'>
