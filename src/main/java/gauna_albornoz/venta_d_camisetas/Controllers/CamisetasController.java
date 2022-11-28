@@ -129,10 +129,10 @@ public class CamisetasController {
             }
            
             body{
-              background-image: url(https://images6.alphacoders.com/550/550393.jpg);
+              background-image: url('image/fondo all.png');
               background-repeat: no-repeat;
               background-position: center, center;
-              background-size: 1660px  900px;
+              background-size: 100%;
               background-attachment: fixed;
             }
               #users {
@@ -194,10 +194,10 @@ public class CamisetasController {
       font-family: sans-serif;
     }
     body{
-        background-image: url(https://s32679.pcdn.co/wp-content/uploads/2022/07/BIC_soccer_football_1280x720-04.png.webp);
+        background-image: url('image/fondo.png');
         background-repeat: no-repeat;
         background-position: center, center;
-        background-size: cover;
+        background-size: 100%;
         background-attachment: fixed;
     }
     nav{

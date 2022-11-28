@@ -13,7 +13,6 @@ public class Camisetas {
     private long id;
     private String club;
     private String tipo;
-
     private long precio;
     private long stock;
 
